@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تأكيد حذف الحساب</title>
+  <title>تأكيد حذف الحساب - سيوف المجد</title>
   <style>
     body { margin: 0; background: #121212; color: #fff; font-family: Tahoma, Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; direction: rtl; }
-    .card { width: 90%; max-width: 420px; background: #1f1f1f; padding: 40px 20px; border-radius: 12px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,.5); }
-    h2 { margin-top: 0; color: #ffcc00; font-size: 24px; }
-    p { line-height: 1.8; margin-bottom: 30px; color: #ccc; font-size: 15px; }
-    button { background: #c62828; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s; width: 100%; max-width: 250px; }
+    .card { width: 90%; max-width: 440px; background: #1f1f1f; padding: 40px 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,.6); border-top: 5px solid #c62828; }
+    h2 { margin-top: 0; color: #ffcc00; font-size: 24px; margin-bottom: 20px; }
+    p { line-height: 1.8; margin-bottom: 25px; color: #ccc; font-size: 15px; }
+    
+    /* صندوق التحذير الاحترافي */
+    .warning-box { background: #331c1c; border-right: 4px solid #ff5252; padding: 15px; border-radius: 6px; margin-bottom: 30px; text-align: right; }
+    .warning-box p { margin: 0; color: #ff8a80; font-size: 13.5px; font-weight: bold; line-height: 1.6; }
+    
+    button { background: #c62828; color: white; border: none; padding: 16px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s, transform 0.1s; width: 100%; max-width: 280px; box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3); }
     button:hover { background: #b71c1c; }
-    button:disabled { background: #555; cursor: not-allowed; }
+    button:active { transform: scale(0.98); }
+    button:disabled { background: #555; cursor: not-allowed; box-shadow: none; }
     #msg { margin-top: 25px; font-size: 16px; font-weight: bold; min-height: 24px; }
   </style>
 </head>
@@ -19,9 +25,14 @@
 
 <div class="card">
   <h2>تأكيد حذف الحساب نهائياً</h2>
-  <p>مرحباً بك، لتأكيد رغبتك في حذف حسابك نهائياً من لعبة <strong>سيوف المجد</strong>، يرجى الضغط على الزر أدناه:</p>
+  <p>مرحباً بك، لتأكيد رغبتك في حذف حسابك نهائياً من لعبة <strong>سيوف المجد</strong>، يرجى قراءة التنبيه أدناه ثم الضغط على زر التأكيد:</p>
+  
+  <!-- صندوق التحذير قبل الزرار مباشرة -->
+  <div class="warning-box">
+    <p>⚠️ تنبيه هام جداً:<br>هذا الإجراء نهائي تماماً وغير قابل للتراجع عنه..</p>
+  </div>
+
   <button id="btn-delete" onclick="confirmDelete()">اضغط هنا لتأكيد الحذف</button>
-    <p>علماً بأن هذا الإجراء لا يمكن التراجع عنه</p>
   <div id="msg"></div>
 </div>
 
@@ -46,7 +57,7 @@ function confirmDelete() {
   btn.innerText = "جاري التأكيد... ⏳";
   msgDiv.innerHTML = ""; 
 
-  // رابط الـ Web App الخلفي بتاع جوجل
+  // رابط الـ Web App الخلفي الجديد المحدث الخاص بك
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMCgK_0I4v6OEMioZFSyum4Z7dCBdAZVme0e0SlN9lkDNLaIBpDzeLzEAltC2IkYqe-A/exec";
 
   fetch(`${GOOGLE_SCRIPT_URL}?token=${encodeURIComponent(token)}`, {
